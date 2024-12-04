@@ -4,6 +4,7 @@ import PageController from './service/PageService';
 import UserController from './service/UserService';
 import Product from './entity/Product';
 import ProductRepository from './repository/ProductRepository';
+import prisma from './prisma';
 
 declare const LOGIN_PRELOAD_WEBPACK_ENTRY: string;
 declare const LOGIN_WEBPACK_ENTRY: string;
@@ -49,9 +50,23 @@ app.on('activate', () => {
 });
 
 ipcMain.handle("create_product", async (_: any, product: any) => {
-  const { name, category, manufacturer, amount } = product;
-  const newProduct = new Product(name, category, manufacturer, amount);
-  await new ProductRepository().save(newProduct);
+  //const { name, category, manufacturer, amount } = product;
+  //const newProduct = new Product(name, category, manufacturer, amount);
+  //await new ProductRepository().save(newProduct);
+try {
+  prisma.usuario.create({
+    data: {
+      id: "123123",
+      name: "Rosane",
+      email: "rosanemaia3108@gmail.com",
+      senha: '123'
+    }
+  })
+} catch (err:any){
+  console.log("errouu")
+  console.log(err)
+}
+
 })
 
 ipcMain.handle("find_all_product", async (_: any) => {
