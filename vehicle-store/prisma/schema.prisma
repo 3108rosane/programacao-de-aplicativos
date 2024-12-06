@@ -21,3 +21,14 @@ model Usuario{
 
   @@map("usuario")
 }
+
+model Produto {
+  id    String  @id
+  name  String?
+  category  String
+  manufacturer  String
+  amount  Int
+  updateAt  DateTime  @updatedAt
+  createAt  DateTime  @default(now())
+  @@map("produto")
+}

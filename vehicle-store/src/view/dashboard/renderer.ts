@@ -46,7 +46,7 @@ document.getElementById("buscar-amount-by-category").addEventListener("click", a
     const categories = [];
 
     for(var i = 0; i < values.length; i++){
-        amounts.push(values[i].amount);
+        amounts.push(values[i]._sum.amount);
         categories.push(values[i].category);
     }
 
